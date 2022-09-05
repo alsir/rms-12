@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Risk List</h1>
+<a href="{% url 'core:riskCreate' %}">Add an
+     risk</a>
+  {% if risk_list %}
+  <table>
+    <tr>
+        <th>risk_id</th>
+        <th>risk_name</th>
+        <th>risk_description</th>
+        <th>risk_level</th>
+        <th>department_name</th>
+        <th>Update</th>
+        <th>Delete</th>
+    </tr>
+    {% for risk in risk_list %}
+      <tr>
+           <td>{{ risk_id }}</td>
+           <td>{{ risk_name }}</td>
+           <td>{{ risk_description }}</td>
+           <td>{{ risk_level }}</td>
+           <td>{{department_name}}</td>
+           <td><a href="{% url 'core:riskUpdate' risk.id %}">Update</a></td>
+           <td><a href="{% url 'core:riskDelete' risk.id %}">Delete</a></td>
+             
+           
+      </tr>
+    {% endfor %}
+  </table>
+  {% else %}
+    <p>There are no risk in the library.</p>
+  {% endif %}
+  {% endblock %}
